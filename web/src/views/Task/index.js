@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { format } from 'date-fns';
-// import { TimeField } from '@mui/x-date-pickers/TimeField';
 
 import api from '../../services/api';
 import isConnected from '../../utils/isConnected';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import TypeIcons from '../../utils/typeIcons';
-import iconCalendar from '../../assets/calendar.png';
-import iconClock from '../../assets/clock.png';
 
 import * as S from './styles';
 
 function Business({ match }) {
   const [ redirect, setRedirect ] = useState(false);
   const [ type, setType ] = useState();
-  // const [ id, setId ] = useState(); 
   const [ done, setDone ] = useState(false);
   const [ name, setName ] = useState();
   const [ description, setDescription ] = useState();
@@ -63,10 +59,6 @@ function Business({ match }) {
       return alert('You need to inform a correct minutes.')
     }
 
-    // if(typeof hour !== 'number' || typeof minute !== 'number'){
-    //   return alert('You need type a numbers in HOUR and MINUTES')
-    // }
-
     if (match.params.id) {
       await api.put(`/task/${match.params.id}`,{
         macaddress: isConnected,
@@ -74,7 +66,7 @@ function Business({ match }) {
         type,
         name,
         description,
-        when: `${date}T${hour}:00.000`
+        when: `${date}T${hour}:${minute}:00.000`
       }).then(() => setRedirect(true))
     } else { 
       await api.post('/task',{
@@ -134,21 +126,14 @@ function Business({ match }) {
 
         <S.Input>
           <span>DATE</span>
-          <img src={iconCalendar} alt="Calendar" />
+          
           <input type="date" onChange={e => setDate(e.target.value)} value={date}/>
         </S.Input>
         
         <S.Input>
           <span>HOUR</span>
-          {/* <img src={iconClock} alt="Clock" /> */}
-          <input type="number" placeholder='hour with 2 numbers' onChange={e => setHour(e.target.value)} value={hour} maxLength={2}/>
-          <input type="number" placeholder='minutes with 2 numbers' onChange={e => setMinute(e.target.value)} value={minute} maxLength={2}/>
-          {/* <TimeField
-          label="hour"
-          value={hour}
-          onChange={(e) => setHour(e)}
-          format="HH:mm"
-        /> */}
+          <input type="number" placeholder='Hour with 2 numbers' onChange={e => setHour(e.target.value)} value={hour} maxLength={2}/>
+          <input type="number" placeholder='Minutes with 2 numbers' onChange={e => setMinute(e.target.value)} value={minute} maxLength={2}/>         
         </S.Input>
 
         <S.Options>
