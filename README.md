@@ -40,7 +40,7 @@ yarn start
 ```
 
 > **_NOTE:_**
-I´m working on a new version Front end. Você pode acompanhar por aqui: https://github.com/pauloteixeira01/frontend-to-do-list
+I´m working on a new version Front end. You can follow here: https://github.com/pauloteixeira01/frontend-to-do-list
 
 ### With your smartphone, use an 'app' to scan the 'qrcode' and type the message in the field.
 ![banner](web/src/img/img1.png)
