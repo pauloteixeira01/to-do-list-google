@@ -12,7 +12,18 @@ This project is a monorepo
 
 
 
-## First - API
+## First - MongoDB
+1. Install MongoDB.
+2. On linux (Debian/Ubuntu) run as root user: 
+```
+sudo service mongod start
+```
+3. Check if it´s running: 
+```
+sudo service mongodb status
+```
+
+## Second - API
 
 
 ### To run the project
@@ -26,7 +37,7 @@ yarn
 yarn start
 ```
 
-## Second - Web
+## Third - Web
 
 ### To run the project
 1. Open a terminal in the project folder (Web folder).
